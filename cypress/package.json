@@ -1,0 +1,10 @@
+{
+  "name": "cypress-testbeats-example",
+  "scripts": {
+    "test": "cypress run"
+  },
+  "devDependencies": {
+    "cypress": "^15.6.0",
+    "cypress-xml-reporter": "^1.0.2"
+  }
+}
