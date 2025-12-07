@@ -14,6 +14,7 @@ TestBeats helps you:
 
 ### Current Examples
 - [Cypress](./cypress/README.md) - E2E testing framework integration
+- [Java + TestNG](./java-testng/README.md) - Java TestNG with Selenium WebDriver integration
 
 ### Coming Soon
 More framework integrations will be added to this repository.
@@ -28,7 +29,11 @@ Each framework integration is in its own directory with:
 
 Navigate to the specific framework directory to get started:
 ```bash
+# For Cypress
 cd cypress
+
+# For Java + TestNG
+cd java-testng
 ```
 
 ## 📚 Resources
