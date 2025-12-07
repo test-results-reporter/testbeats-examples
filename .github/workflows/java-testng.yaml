@@ -28,6 +28,15 @@ jobs:
         sudo apt-get install -y google-chrome-stable
     - name: Run TestNG tests
       run: mvn clean test
+    - name: Upload test results and screenshots
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: testng-test-results
+        path: |
+          java-testng/target/surefire-reports/**/*.xml
+          java-testng/target/screenshots/**/*
+        retention-days: 30
     - run: npx testbeats@latest publish -c testbeats.config.json
       if: always()
       env:
