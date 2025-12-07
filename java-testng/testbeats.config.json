@@ -19,7 +19,7 @@
   "results": [
     {
       "type": "junit",
-      "files": ["target/surefire-reports/*.xml"]
+      "files": ["target/surefire-reports/junitreports/*.xml"]
     }
   ]
 }

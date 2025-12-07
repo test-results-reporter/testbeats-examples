@@ -6,9 +6,10 @@ This example demonstrates how to integrate Java TestNG test results with TestBea
 
 - Sample TestNG tests with Selenium WebDriver
 - Maven configuration with Surefire plugin for JUnit XML reports
+- Automatic screenshot capture for failed tests
 - TestBeats configuration for publishing results
 - GitHub Actions workflow for CI/CD
-- Example test results
+- Example test results and screenshots
 
 ## 🏗️ Project Structure
 
@@ -20,10 +21,15 @@ java-testng/
 │           └── com/
 │               └── testbeats/
 │                   ├── TestBeatsHomePageTests.java      # Sample tests for home page
-│                   └── TestBeatsPricingPageTests.java  # Sample tests for pricing page
+│                   ├── TestBeatsPricingPageTests.java  # Sample tests for pricing page
+│                   ├── ScreenshotUtil.java            # Utility for capturing screenshots
+│                   └── ScreenshotListener.java         # TestNG listener for screenshots
 ├── target/
-│   └── surefire-reports/
-│       └── *.xml                                        # Generated JUnit XML reports
+│   ├── surefire-reports/
+│   │   └── junitreports/
+│   │       └── *.xml                                    # Generated JUnit XML reports
+│   └── screenshots/
+│       └── *.png                                        # Screenshots from failed tests
 ├── pom.xml                                              # Maven configuration
 ├── testng.xml                                           # TestNG suite configuration
 ├── testbeats.config.json                               # TestBeats configuration
@@ -95,7 +101,7 @@ Configure TestBeats to publish results:
   "results": [
     {
       "type": "junit",
-      "files": ["target/surefire-reports/*.xml"]
+      "files": ["target/surefire-reports/junitreports/*.xml"]
     }
   ]
 }
@@ -105,7 +111,14 @@ Configure TestBeats to publish results:
 - `api_key`: Your TestBeats API key (set via environment variable)
 - `targets`: Where to publish results (Slack, Teams, etc.)
 - `extensions`: Additional features like charts and CI info
-- `results`: Points to the generated JUnit XML files from Maven Surefire
+- `results`: Points to the JUnit XML reports in `junitreports/` directory (one file per test class)
+
+**Note:** Maven Surefire generates multiple report files:
+- `junitreports/*.xml` - JUnit XML reports (one per test class) - **Recommended for TestBeats**
+- `TEST-TestSuite.xml` - Aggregated Surefire report
+- `testng-results.xml` - TestNG native format
+
+The config uses `junitreports/*.xml` as these are proper JUnit XML format reports that TestBeats can process. If you prefer a single aggregated report, you can use `["target/surefire-reports/TEST-TestSuite.xml"]` instead.
 
 ### Running Tests
 
@@ -118,6 +131,13 @@ This will:
 1. Compile the test classes
 2. Execute all tests defined in `testng.xml`
 3. Generate JUnit XML reports in `target/surefire-reports/`
+4. Capture screenshots for failed tests in `target/screenshots/`
+
+**Screenshot Capture:**
+- Screenshots are automatically captured when a test fails
+- Screenshots are saved to `target/screenshots/` directory
+- Filename format: `{ClassName}_{MethodName}_{Timestamp}.png`
+- Screenshots are included in GitHub Actions artifacts for easy debugging
 
 ### Publishing Results to TestBeats
 

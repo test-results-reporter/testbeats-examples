@@ -3,6 +3,7 @@ package com.testbeats;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -16,6 +17,10 @@ public class TestBeatsPricingPageTests {
 
     private WebDriver driver;
 
+    public WebDriver getDriver() {
+        return driver;
+    }
+
     @BeforeMethod
     public void setUp() {
         // Setup Chrome driver with headless mode for CI/CD
@@ -27,7 +32,12 @@ public class TestBeatsPricingPageTests {
     }
 
     @AfterMethod
-    public void tearDown() {
+    public void tearDown(ITestResult result) {
+        // Capture screenshot if test failed
+        if (result.getStatus() == ITestResult.FAILURE && driver != null) {
+            ScreenshotUtil.captureScreenshot(driver, result);
+        }
+
         if (driver != null) {
             driver.quit();
         }
