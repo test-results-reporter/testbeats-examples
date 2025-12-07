@@ -1,0 +1,25 @@
+{
+  "api_key": "{TEST_BEATS_API_KEY}",
+  "targets": [
+    {
+      "name": "slack",
+      "inputs": {
+        "url": "{SLACK_MVP_URL}"
+      }
+    }
+  ],
+  "extensions": [
+    {
+      "name": "quick-chart-test-summary"
+    },
+    {
+      "name": "ci-info"
+    }
+  ],
+  "results": [
+    {
+      "type": "junit",
+      "files": ["target/surefire-reports/junitreports/*.xml"]
+    }
+  ]
+}
