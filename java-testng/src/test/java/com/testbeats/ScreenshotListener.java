@@ -6,8 +6,7 @@ import org.testng.ITestResult;
 
 /**
  * TestNG listener to capture screenshots on test failure
- * Note: Screenshots are primarily captured in @AfterMethod, but this listener
- * serves as a backup in case @AfterMethod doesn't execute properly.
+ * Screenshots are automatically embedded in TestNG HTML reports using Reporter.log()
  */
 public class ScreenshotListener implements ITestListener {
 

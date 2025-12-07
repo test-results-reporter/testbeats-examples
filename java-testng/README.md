@@ -62,10 +62,13 @@ The project uses:
 
 #### 2. TestNG Configuration (`testng.xml`)
 
-Defines the test suite and which test classes to run:
+Defines the test suite and which test classes to run. The `ScreenshotListener` is registered to automatically capture screenshots on test failure:
 
 ```xml
 <suite name="TestBeats Test Suite">
+    <listeners>
+        <listener class-name="com.testbeats.ScreenshotListener"/>
+    </listeners>
     <test name="TestBeats Tests">
         <classes>
             <class name="com.testbeats.TestBeatsHomePageTests"/>
@@ -74,6 +77,8 @@ Defines the test suite and which test classes to run:
     </test>
 </suite>
 ```
+
+The listener uses `Reporter.log()` to embed screenshot links directly in the TestNG HTML report, making it easy to view screenshots when reviewing test results.
 
 #### 3. TestBeats Configuration (`testbeats.config.json`)
 
@@ -131,12 +136,14 @@ This will:
 1. Compile the test classes
 2. Execute all tests defined in `testng.xml`
 3. Generate JUnit XML reports in `target/surefire-reports/`
-4. Capture screenshots for failed tests in `target/screenshots/`
+4. Capture screenshots for failed tests and embed them in TestNG HTML reports
 
 **Screenshot Capture:**
-- Screenshots are automatically captured when a test fails
+- Screenshots are automatically captured when a test fails via `ScreenshotListener`
 - Screenshots are saved to `target/screenshots/` directory
 - Filename format: `{ClassName}_{MethodName}_{Timestamp}.png`
+- Screenshots are embedded in TestNG HTML reports using `Reporter.log()` - you'll see clickable thumbnail links in the report
+- Screenshots are also added to JUnit XML reports in `<system-out>` section using `[[ATTACHMENT|path]]` format, which is recognized by tools like TestBeats, Allure, etc.
 - Screenshots are included in GitHub Actions artifacts for easy debugging
 
 ### Publishing Results to TestBeats
