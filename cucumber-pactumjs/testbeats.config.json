@@ -18,13 +18,13 @@
   ],
   "results": [
     {
-      "type": "junit",
-      "files": ["target/surefire-reports/junitreports/*.xml"]
+      "type": "cucumber",
+      "files": ["reports/*.json"]
     }
   ],
   "metadata": {
-    "framework": "selenium",
-     "runner": "testng",
-    "language": "java"
+    "framework": "pactumjs",
+    "runner": "cucumber",
+    "language": "javascript"
   }
 }

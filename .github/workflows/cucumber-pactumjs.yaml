@@ -1,0 +1,36 @@
+name: Cucumber PactumJS
+
+on:
+  workflow_dispatch:
+
+defaults:
+  run:
+    shell: bash
+    working-directory: ./cucumber-pactumjs
+
+jobs:
+  test:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: lts/*
+    - name: Install dependencies
+      run: npm ci
+    - name: Run Cucumber PactumJS tests
+      run: npm run test
+    - name: Upload test results and screenshots
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: cucumber-pactumjs-test-results
+        path: |
+          cucumber-pactumjs/reports/*.json
+        retention-days: 30
+    - run: npx testbeats@latest publish -c testbeats.config.json
+      if: always()
+      env:
+        TEST_BEATS_API_KEY: ${{ secrets.TEST_BEATS_API_KEY }}
+        SLACK_MVP_URL: ${{ secrets.SLACK_MVP_URL }}
