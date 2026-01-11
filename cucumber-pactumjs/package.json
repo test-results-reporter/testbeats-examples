@@ -1,0 +1,16 @@
+{
+  "name": "example-pactum-cucumber-testbeats",
+  "version": "1.0.0",
+  "description": "example repo to showcase integration of pactum and cucumber with testbeats",
+  "main": "index.js",
+  "scripts": {
+    "test": "cucumber-js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@cucumber/cucumber": "^10.9.0",
+    "pactum": "^3.7.1"
+  }
+}

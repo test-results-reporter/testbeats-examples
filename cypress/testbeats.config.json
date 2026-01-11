@@ -21,5 +21,10 @@
       "type": "junit",
       "files": ["results/cypress/e2e/*.xml"]
     }
-  ]
+  ],
+  "metadata": {
+    "framework": "cypress",
+    "runner": "cypress",
+    "language": "javascript"
+  }
 }
