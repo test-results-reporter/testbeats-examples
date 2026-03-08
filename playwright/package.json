@@ -1,0 +1,19 @@
+{
+  "name": "example-playwright-testbeats",
+  "version": "1.0.0",
+  "description": "example repo to showcase integration of playwright with testbeats",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "publish": "npx testbeats@latest publish -c testbeats.config.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.44.0",
+    "@types/node": "^20.12.12"
+  }
+}

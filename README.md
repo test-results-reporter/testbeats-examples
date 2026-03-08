@@ -15,6 +15,8 @@ TestBeats helps you:
 ### Current Examples
 - [Cypress](./cypress/README.md) - E2E testing framework integration
 - [Java + TestNG](./java-testng/README.md) - Java TestNG with Selenium WebDriver integration
+- [Playwright](./playwright/README.md) - Playwright E2E testing with TestBeats integration
+- [Cucumber PactumJS](./cucumber-pactumjs/README.md) - Cucumber with PactumJS API testing
 
 ### Coming Soon
 More framework integrations will be added to this repository.
@@ -34,6 +36,12 @@ cd cypress
 
 # For Java + TestNG
 cd java-testng
+
+# For Playwright
+cd playwright
+
+# For Cucumber PactumJS
+cd cucumber-pactumjs
 ```
 
 ## 📚 Resources

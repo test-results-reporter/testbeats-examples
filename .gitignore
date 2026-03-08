@@ -148,3 +148,6 @@ cypress/results
 
 # Cucumber PactumJS
 cucumber-pactumjs/reports
+
+# Playwright
+playwright/test-results
