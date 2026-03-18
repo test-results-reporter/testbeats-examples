@@ -151,3 +151,6 @@ cucumber-pactumjs/reports
 
 # Playwright
 playwright/test-results
+
+# WebDriverIO Cucumber
+webdriverio-cucumber/reports

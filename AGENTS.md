@@ -9,6 +9,7 @@ Each testing framework integration resides in its own top-level directory:
 - `playwright/`: Playwright E2E testing
 - `java-testng/`: Java TestNG integration
 - `cucumber-pactumjs/`: Cucumber with PactumJS integration
+- `webdriverio-cucumber/`: WebDriverIO with Cucumber integration
 
 ## Adding a New Example
 
