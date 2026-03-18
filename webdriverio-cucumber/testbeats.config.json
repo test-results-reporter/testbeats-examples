@@ -1,0 +1,25 @@
+{
+  "targets": [
+    {
+      "name": "slack",
+      "inputs": {
+        "url": "{SLACK_MVP_URL}",
+        "only_failures": false
+      }
+    }
+  ],
+  "extensions": [
+    {
+      "name": "quick-chart-test-summary"
+    },
+    {
+      "name": "ci-info"
+    }
+  ],
+  "results": [
+    {
+      "type": "cucumber",
+      "files": ["reports/*.json"]
+    }
+  ]
+}

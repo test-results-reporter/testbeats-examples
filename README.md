@@ -17,6 +17,7 @@ TestBeats helps you:
 - [Java + TestNG](./java-testng/README.md) - Java TestNG with Selenium WebDriver integration
 - [Playwright](./playwright/README.md) - Playwright E2E testing with TestBeats integration
 - [Cucumber PactumJS](./cucumber-pactumjs/README.md) - Cucumber with PactumJS API testing
+- [WebDriverIO + Cucumber](./webdriverio-cucumber/README.md) - WebDriverIO with Cucumber E2E integration
 
 ### Coming Soon
 More framework integrations will be added to this repository.
@@ -42,6 +43,9 @@ cd playwright
 
 # For Cucumber PactumJS
 cd cucumber-pactumjs
+
+# For WebDriverIO + Cucumber
+cd webdriverio-cucumber
 ```
 
 ## 📚 Resources
